@@ -28,4 +28,11 @@ dependencyResolutionManagement {
     }
 }
 
-include(":composeApp")
+include(":root")
+include(":camera")
+include(":detection")
+include(":engine:twoD")
+include(":engine:threeD")
+include(":core")
+include(":config")
+include(":shared")

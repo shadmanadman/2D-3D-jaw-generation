@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
 }
 
 kotlin {
@@ -21,6 +23,7 @@ kotlin {
     }
     sourceSets {
         commonMain.dependencies {
+            implementation(compose.foundation)
         }
     }
 }

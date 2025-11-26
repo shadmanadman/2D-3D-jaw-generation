@@ -28,6 +28,8 @@ kotlin {
         androidMain.dependencies {
         }
         commonMain.dependencies {
+            implementation(compose.foundation)
+            api(project(":shared"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

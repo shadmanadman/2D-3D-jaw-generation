@@ -28,6 +28,7 @@ kotlin {
         androidMain.dependencies {
         }
         commonMain.dependencies {
+            api(project(":shared"))
         }
         commonTest.dependencies {
         }

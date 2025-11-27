@@ -45,9 +45,7 @@ enum class JawSideStatus {
 enum class JawType{
     UPPER,
     LOWER,
-    FRONT,
-    FRONT_UPPER,
-    FRONT_LOWER
+    FRONT
 }
 
 data class AcceptedFrame(

@@ -1,4 +1,4 @@
-package detection
+package detector
 
 import model.JawSide
 import model.JawType

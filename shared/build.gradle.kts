@@ -23,7 +23,7 @@ kotlin {
     }
     sourceSets {
         commonMain.dependencies {
-            implementation(compose.foundation)
+            api(compose.foundation)
         }
     }
 }

@@ -1,0 +1,47 @@
+PODS:
+  - detection (1.2.0):
+    - TensorFlowLiteObjC
+    - TensorFlowLiteObjC/CoreML
+    - TensorFlowLiteObjC/Metal
+  - TensorFlowLiteC (2.17.0):
+    - TensorFlowLiteC/Core (= 2.17.0)
+  - TensorFlowLiteC/Core (2.17.0)
+  - TensorFlowLiteC/CoreML (2.17.0):
+    - TensorFlowLiteC/Core
+  - TensorFlowLiteC/Metal (2.17.0):
+    - TensorFlowLiteC/Core
+  - TensorFlowLiteObjC (2.17.0):
+    - TensorFlowLiteObjC/Core (= 2.17.0)
+  - TensorFlowLiteObjC/Core (2.17.0):
+    - TensorFlowLiteC (= 2.17.0)
+    - TensorFlowLiteObjC/Privacy (= 2.17.0)
+  - TensorFlowLiteObjC/CoreML (2.17.0):
+    - TensorFlowLiteC/CoreML (= 2.17.0)
+    - TensorFlowLiteObjC/Core (= 2.17.0)
+    - TensorFlowLiteObjC/Privacy (= 2.17.0)
+  - TensorFlowLiteObjC/Metal (2.17.0):
+    - TensorFlowLiteC/Metal (= 2.17.0)
+    - TensorFlowLiteObjC/Core (= 2.17.0)
+    - TensorFlowLiteObjC/Privacy (= 2.17.0)
+  - TensorFlowLiteObjC/Privacy (2.17.0)
+
+DEPENDENCIES:
+  - detection (from `../detection`)
+
+SPEC REPOS:
+  trunk:
+    - TensorFlowLiteC
+    - TensorFlowLiteObjC
+
+EXTERNAL SOURCES:
+  detection:
+    :path: "../detection"
+
+SPEC CHECKSUMS:
+  detection: bdd72d88a50e16b0ea4655e883c39805b6557aa5
+  TensorFlowLiteC: eac6d689a8d391d1b202dc59e3d9165ba64aaf73
+  TensorFlowLiteObjC: 72e1fa903465cd6a8d3d614c1474c5aad7635bb7
+
+PODFILE CHECKSUM: 2baae2b3b6b83ae7e38f231c61f37551bc266d4d
+
+COCOAPODS: 1.16.2

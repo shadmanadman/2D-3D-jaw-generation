@@ -50,6 +50,7 @@ kotlin {
             implementation(libs.litertGPU)
         }
         commonMain.dependencies {
+            api(compose.foundation)
             api(project(":shared"))
         }
         commonTest.dependencies {

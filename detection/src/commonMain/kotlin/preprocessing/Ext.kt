@@ -1,5 +1,7 @@
 package preprocessing
 
+import model.ToothBox
+
 
 /**
  * Visible boxes that can been seen in the screen with a small padding. the hole box should

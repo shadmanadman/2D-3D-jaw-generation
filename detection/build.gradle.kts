@@ -45,6 +45,8 @@ kotlin {
 
     sourceSets {
         androidMain.dependencies {
+            implementation(compose.ui)
+            implementation(libs.androidx.activity.compose)
             implementation(libs.androidx.startup)
             implementation(libs.litert)
         }

@@ -45,8 +45,6 @@ androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = 
 
 # Precompose
 precompose-core = { module = "moe.tlaster:precompose", version.ref = "precompose" }
-precompose-koin = { module = "moe.tlaster:precompose-koin", version.ref = "precompose" }
-precompose-viewmodel = { module = "moe.tlaster:precompose-viewmodel", version.ref = "precompose" }
 
 # tflite for Android
 litertGpuApi = { module = "com.google.ai.edge.litert:litert-gpu-api", version.ref = "litert" }

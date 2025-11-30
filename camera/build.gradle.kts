@@ -28,7 +28,9 @@ kotlin {
         androidMain.dependencies {
         }
         commonMain.dependencies {
+            implementation(libs.precompose.core)
             api(project(":shared"))
+            api(project(":detection"))
         }
         commonTest.dependencies {
         }

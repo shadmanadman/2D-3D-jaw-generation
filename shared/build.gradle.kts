@@ -22,6 +22,9 @@ kotlin {
         }
     }
     sourceSets {
+        androidMain.dependencies {
+            implementation(libs.accompanist.permissions)
+        }
         commonMain.dependencies {
             implementation(compose.foundation)
         }

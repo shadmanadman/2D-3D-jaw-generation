@@ -18,6 +18,7 @@ skiko = "0.9.37.3"
 startup = "1.2.0"
 precompose = "1.7.0-alpha03"
 litert = "2.0.3"
+accompanist-permissions = "0.37.3"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -51,7 +52,10 @@ precompose-core = { module = "moe.tlaster:precompose", version.ref = "precompose
 litertGpuApi = { module = "com.google.ai.edge.litert:litert-gpu-api", version.ref = "litert" }
 litert = { module = "com.google.ai.edge.litert:litert", version.ref = "litert" }
 litertGPU = { module = "com.google.ai.edge.litert:litert-gpu", version.ref = "litert" }
+
 skiko = { module = "org.jetbrains.skiko:skiko", version.ref = "skiko" }
+
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist-permissions" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

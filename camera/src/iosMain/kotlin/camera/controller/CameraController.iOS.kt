@@ -30,6 +30,7 @@ actual class CameraController(
     private var metadataObjectsDelegate: AVCaptureMetadataOutputObjectsDelegateProtocol? = null
     private val memoryManager = MemoryManager
     private val customCameraController = CustomCameraController()
+    actual var onImageAvailable: ((SharedImage?) -> Unit)? = null
 
 
     override fun viewDidLoad() {
@@ -109,14 +110,6 @@ actual class CameraController(
         TorchMode.ON -> AVCaptureTorchModeOn
         TorchMode.OFF -> AVCaptureTorchModeOff
         TorchMode.AUTO -> AVCaptureTorchModeAuto
-    }
-
-    actual fun onImageAvailable(): StateFlow<SharedImage> {
-        TODO("Not yet implemented")
-    }
-
-    actual fun captureImage(): StateFlow<SharedImage> {
-        TODO("Not yet implemented")
     }
 
 }

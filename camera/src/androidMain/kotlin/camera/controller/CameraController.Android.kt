@@ -1,6 +1,9 @@
 package camera.controller
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Bitmap.createBitmap
+import android.graphics.Color
 import android.provider.ContactsContract
 import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
@@ -13,10 +16,15 @@ import androidx.camera.core.resolutionselector.ResolutionStrategy
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.scale
 import androidx.lifecycle.LifecycleOwner
-import kotlinx.coroutines.flow.StateFlow
-import platform.SharedImage
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
 import java.util.concurrent.Executors
+import kotlin.use
+import androidx.core.graphics.get
+import detector.INPUT_IMAGE_SIZE
+import platform.SharedImage
 
 actual class CameraController(
     val context: Context,
@@ -27,7 +35,7 @@ actual class CameraController(
     internal var imageFormat: ImageFormat,
     internal var directory: ContactsContract.Directory,
     internal var cameraDeviceType: String,
-){
+) {
     private var cameraProvider: ProcessCameraProvider? = null
     private var imageCapture: ImageCapture? = null
     private var preview: Preview? = null
@@ -37,6 +45,7 @@ actual class CameraController(
 
     private val imageProcessingExecutor = Executors.newFixedThreadPool(2)
     private val memoryManager = MemoryManager
+    actual var onImageAvailable: ((SharedImage?) -> Unit)? = null
 
     fun bindCamera(previewView: PreviewView, onCameraReady: () -> Unit = {}) {
         this.previewView = previewView
@@ -63,7 +72,23 @@ actual class CameraController(
                     .build()
 
 
-                //configureCaptureUseCase()
+                imageAnalyzer = ImageAnalysis.Builder()
+                    .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                    .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
+                    .build()
+                    .also {
+                        it.setAnalyzer(imageProcessingExecutor) { image ->
+                            val bitmapBuffer =
+                                createBitmap(
+                                    image.width,
+                                    image.height,
+                                    Bitmap.Config.ARGB_8888
+                                )
+                            image.use { bitmapBuffer.copyPixelsFromBuffer(image.planes[0].buffer) }
+                            onImageAvailable?.invoke(SharedImage(bitmapBuffer))
+                            image.close()
+                        }
+                    }
 
 
                 val useCases = mutableListOf(preview!!, imageCapture!!)
@@ -115,13 +140,10 @@ actual class CameraController(
         CameraLens.FRONT -> CameraSelector.LENS_FACING_FRONT
         CameraLens.BACK -> CameraSelector.LENS_FACING_BACK
     }
+
     fun cleanup() {
         imageProcessingExecutor.shutdown()
         memoryManager.clearBufferPools()
-    }
-
-    actual fun onImageAvailable(): StateFlow<SharedImage> {
-        TODO("Not yet implemented")
     }
 
 }

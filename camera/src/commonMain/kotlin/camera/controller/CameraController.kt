@@ -1,10 +1,9 @@
 package camera.controller
 
-import kotlinx.coroutines.flow.StateFlow
 import platform.SharedImage
 
 expect class CameraController(){
-    fun onImageAvailable(): StateFlow<SharedImage>
+    var onImageAvailable: ((SharedImage?) -> Unit)?
     fun setTorchMode(mode: TorchMode)
     fun startSession()
     fun stopSession()

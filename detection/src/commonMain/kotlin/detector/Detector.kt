@@ -34,25 +34,15 @@ const val Y_INDEX = 1
 const val W_INDEX = 2
 const val H_INDEX = 3
 
-@OptIn(ExperimentalCoroutinesApi::class)
-fun CoroutineScope.resizeInputBitmap(inputBitmap: ImageBitmap) = produce {
-    send(inputBitmap.squareMe().resize(INPUT_IMAGE_SIZE.toInt(), INPUT_IMAGE_SIZE.toInt()))
-}
 
-@OptIn(ExperimentalCoroutinesApi::class)
-fun CoroutineScope.processInput(inputBitmap: ImageBitmap) = produce {
-    val resizedInputBitmap = resizeInputBitmap(inputBitmap).receive()
-    send(listOf(resizedInputBitmap.toScaledByteBuffer(inputAllocateSize = MODEL_INPUT_ALLOCATED_SIZE.toInt())))
-}
 
 @OptIn(ExperimentalCoroutinesApi::class)
 fun CoroutineScope.runDetection(
+    inputs: List<ByteArray>,
     model: Litert,
     isFrontJaw: Boolean,
-    inputBitmap: ImageBitmap
 ): ReceiveChannel<List<ToothBox>> = produce {
-    val input = processInput(inputBitmap).receive()
-    model.run(input, mapOf(Pair(0, outputContainer)))
+    model.run(inputs, mapOf(Pair(0, outputContainer)))
     val output = processOutput(isFrontJaw, outputContainer).receive()
     send(output)
 }

@@ -50,11 +50,8 @@ object MemoryManager {
         activityManager.getMemoryInfo(memoryInfo)
 
         val availableMemory = memoryInfo.availMem
-        val totalMemory = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        val totalMemory =
             memoryInfo.totalMem
-        } else {
-            Runtime.getRuntime().totalMemory()
-        }
 
         if (totalMemory > 0) {
             val usedMemory = totalMemory - availableMemory

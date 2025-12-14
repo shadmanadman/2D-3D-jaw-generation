@@ -33,7 +33,7 @@ import jaw_generation.resource.generated.resources.ic_teeth_7
 import jaw_generation.resource.generated.resources.ic_teeth_8
 import jaw_generation.resource.generated.resources.ic_upper
 
-object Drawable {
+object DrawableRes {
     val ic_half_rectangle = Res.drawable.ic_half_rectangle
     val close = Res.drawable.ic_close
     val lightening = Res.drawable.ic_lighting

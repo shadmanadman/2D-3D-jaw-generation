@@ -23,8 +23,8 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import camera.viewmodel.JawViewModel
-import drawable.Drawable.detected_teeth_stage
-import drawable.Drawable.not_detected_teeth_stage
+import drawable.DrawableRes.detected_teeth_stage
+import drawable.DrawableRes.not_detected_teeth_stage
 import ext.toIconIndex
 import model.JawSide
 import model.ToothDetectionStatus

@@ -22,10 +22,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import camera.viewmodel.JawViewModel
-import drawable.Drawable
+import drawable.DrawableRes
 import model.JawType
 import org.jetbrains.compose.resources.painterResource
-import string.en.String
+import string.en.StringRes
 import theme.Transparent
 import theme.White
 import theme.appTypography
@@ -87,9 +87,9 @@ fun IdentifiedRightAndLeftSideOfUser(modifier: Modifier, isLeftSide: Boolean = f
 
 
     val text = if (isLeftSide)
-        String.your_left_side
+        StringRes.your_left_side
     else
-        String.your_right_side
+        StringRes.your_right_side
 
     Box(
         modifier = modifier
@@ -98,7 +98,7 @@ fun IdentifiedRightAndLeftSideOfUser(modifier: Modifier, isLeftSide: Boolean = f
             .graphicsLayer(rotationZ = rotateForLeftSide)
     ) {
         Image(
-            painter = painterResource(Drawable.ic_half_rectangle),
+            painter = painterResource(DrawableRes.ic_half_rectangle),
             contentDescription = "",
             modifier = Modifier
                 .fillMaxHeight()

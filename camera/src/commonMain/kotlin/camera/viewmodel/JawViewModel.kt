@@ -17,6 +17,7 @@ import model.JawType
 import model.ToothDetectionStatus
 import model.ToothNumber
 import kotlin.collections.set
+import kotlin.text.toInt
 
 typealias JawProgress = Map<JawType, Int>
 
@@ -196,6 +197,9 @@ class JawViewModel : ViewModel(){
     )
     val jawsProgressDic = _jawsProgressDic.asStateFlow()
 
+    fun averageJawsProgress(): Int {
+        return _jawsProgressDic.value.values.average().toInt()
+    }
     init {
         val upperJawTeethCount = 16
         val lowerJawTeethCount = 16

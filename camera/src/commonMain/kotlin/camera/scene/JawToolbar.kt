@@ -34,7 +34,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import camera.viewmodel.JawViewModel
-import drawable.Drawable
+import drawable.DrawableRes
 import model.JawType
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
@@ -61,7 +61,7 @@ fun JawToolbar(
     ) {
         // Jaw buttons
         JawButton(
-            jawImage = Drawable.lower_jaw,
+            jawImage = DrawableRes.lower_jaw,
             jawProgress = jawProgress[JawType.LOWER] ?: 0,
             isSelected = selectedJaw == JawType.LOWER,
             onJawSelected = {
@@ -71,7 +71,7 @@ fun JawToolbar(
             isCompleted = jawProgress[JawType.LOWER] == 100
         )
         JawButton(
-            jawImage = Drawable.front_jaw,
+            jawImage = DrawableRes.front_jaw,
             jawProgress = jawProgress[JawType.FRONT] ?: 0,
             isSelected = selectedJaw == JawType.FRONT,
             onJawSelected = {
@@ -81,7 +81,7 @@ fun JawToolbar(
             isCompleted = jawProgress[JawType.FRONT] == 100
         )
         JawButton(
-            jawImage = Drawable.upper_jaw,
+            jawImage = DrawableRes.upper_jaw,
             jawProgress = jawProgress[JawType.UPPER] ?: 0,
             isSelected = selectedJaw == JawType.UPPER,
             onJawSelected = {

@@ -15,9 +15,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import drawable.Drawable
+import drawable.DrawableRes
 import org.jetbrains.compose.resources.painterResource
-import string.en.String
+import string.en.StringRes
 import theme.Secondary
 import theme.White
 import theme.appTypography
@@ -39,7 +39,7 @@ fun CameraToolbar(onBackClick: () -> Unit, onHelpClick: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(Drawable.close),
+                painter = painterResource(DrawableRes.close),
                 colorFilter = ColorFilter.tint(
                     White
                 ),
@@ -53,7 +53,7 @@ fun CameraToolbar(onBackClick: () -> Unit, onHelpClick: () -> Unit) {
                     .clickable(onClick = { onBackClick() },
                         indication = null,
                         interactionSource = remember { MutableInteractionSource() }),
-                text = String.close,
+                text = StringRes.close,
                 style = appTypography().title15,
                 color = White
             )
@@ -67,7 +67,7 @@ fun CameraToolbar(onBackClick: () -> Unit, onHelpClick: () -> Unit) {
                     indication = null,
                     interactionSource = remember { MutableInteractionSource() })
                 .padding(end = 24.dp),
-            painter = painterResource(Drawable.info),
+            painter = painterResource(DrawableRes.info),
             colorFilter = ColorFilter.tint(
                 Secondary
             ),
@@ -76,7 +76,7 @@ fun CameraToolbar(onBackClick: () -> Unit, onHelpClick: () -> Unit) {
 
         // The torch is on for camera
         Image(
-            painter = painterResource(Drawable.lightening), colorFilter = ColorFilter.tint(
+            painter = painterResource(DrawableRes.lightening), colorFilter = ColorFilter.tint(
                 Color.White
             ), contentDescription = "Torch is on"
         )

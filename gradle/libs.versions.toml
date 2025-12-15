@@ -67,6 +67,7 @@ accompanist-permissions = { module = "com.google.accompanist:accompanist-permiss
 androidx-camera = { group = "androidx.camera", name = "camera-view", version.ref = "camerax" }
 androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "camerax" }
 androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "camerax" }
+androidx-camera2 = {module = "androidx.camera:camera-camera2", version.ref = "camerax"}
 
 atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "atomicfu" }
 

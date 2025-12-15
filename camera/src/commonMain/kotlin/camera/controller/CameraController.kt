@@ -8,6 +8,8 @@ expect class CameraController(){
     fun setTorchMode(mode: TorchMode)
     suspend fun setFocus(focusPoints: FocusPoints): Boolean
     fun clearFocus()
+    fun setZoom(zoomRatio: Float)
+    fun clearZoom()
     fun startSession()
     fun stopSession()
 }

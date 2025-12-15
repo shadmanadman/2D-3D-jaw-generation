@@ -163,6 +163,17 @@ actual class CameraController(
     actual fun clearFocus(){
         camera?.cameraControl?.cancelFocusAndMetering()
     }
+
+    actual fun setZoom(zoomRatio: Float){
+        camera?.cameraControl?.setZoomRatio(zoomRatio)
+    }
+
+    actual fun clearZoom(){
+        camera?.cameraControl?.setZoomRatio(0f)
+    }
+
+    actual fun getMinimumFocusDistance(): Float{}
+    actual fun getFOV(): Double{}
 }
 
 const val WAIT_FOR_FOCUS_TO_FINISH = 2000L

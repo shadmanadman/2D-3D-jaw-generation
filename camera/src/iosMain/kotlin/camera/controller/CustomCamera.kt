@@ -3,6 +3,7 @@ package camera.controller
 import kotlinx.cinterop.CValue
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.AVFoundation.*
+import platform.CoreGraphics.CGFloat
 import platform.CoreGraphics.CGPoint
 import platform.Foundation.NSData
 import platform.Foundation.NSError
@@ -235,6 +236,17 @@ class CustomCameraController() : NSObject(), AVCapturePhotoCaptureDelegateProtoc
 
         if (currentCamera?.isExposureModeSupported(AVCaptureExposureModeContinuousAutoExposure) == true)
             currentCamera?.exposureMode = AVCaptureExposureModeContinuousAutoExposure
+    }
+
+    fun setZoom(zoomRatio: CGFloat){
+        val maxAvailableZoomFactor = currentCamera?.maxAvailableVideoZoomFactor() ?: 0.0
+        if (zoomRatio > maxAvailableZoomFactor)
+            return
+        currentCamera?.setVideoZoomFactor(zoomRatio)
+    }
+
+    fun clearZoom(){
+        currentCamera?.setVideoZoomFactor(0)
     }
 
     /**

@@ -16,6 +16,7 @@ import platform.AVFoundation.AVCaptureVideoOrientationLandscapeRight
 import platform.AVFoundation.AVCaptureVideoOrientationPortrait
 import platform.AVFoundation.AVCaptureVideoOrientationPortraitUpsideDown
 import platform.CoreGraphics.CGPoint
+import platform.CoreGraphics.CGFloat
 import platform.CoreGraphics.CGPointMake
 import platform.SharedImage
 import platform.UIKit.UIDevice
@@ -117,6 +118,17 @@ actual class CameraController(
     actual fun clearFocus(){
         customCameraController.clearFocus()
     }
+
+    actual fun setZoom(zoomRatio: Float){
+        customCameraController.setZoom(zoomRatio.toDouble())
+    }
+
+    actual fun clearZoom(){
+        customCameraController.clearFocus()
+    }
+
+    actual fun getMinFocusDistance(): Float{}
+    actual fun getFOV(): Double{}
 
 
     private fun TorchMode.toAVCaptureTorchMode(): AVCaptureTorchMode = when (this) {

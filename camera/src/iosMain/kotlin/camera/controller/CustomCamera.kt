@@ -221,7 +221,7 @@ class CustomCameraController() : NSObject(), AVCapturePhotoCaptureDelegateProtoc
 
     @OptIn(ExperimentalForeignApi::class)
     fun setFocus(cgPoint: CValue<CGPoint>) {
-        currentCamera?.let { camera->
+        currentCamera?.let { camera ->
             camera.setFocusMode(AVCaptureFocusModeContinuousAutoFocus)
             camera.setSubjectAreaChangeMonitoringEnabled(true)
             camera.setFocusPointOfInterest(cgPoint)
@@ -238,15 +238,26 @@ class CustomCameraController() : NSObject(), AVCapturePhotoCaptureDelegateProtoc
             currentCamera?.exposureMode = AVCaptureExposureModeContinuousAutoExposure
     }
 
-    fun setZoom(zoomRatio: CGFloat){
+    @OptIn(ExperimentalForeignApi::class)
+    fun setZoom(zoomRatio: CGFloat) {
         val maxAvailableZoomFactor = currentCamera?.maxAvailableVideoZoomFactor() ?: 0.0
         if (zoomRatio > maxAvailableZoomFactor)
             return
+//        currentCamera?.lockForConfiguration()
         currentCamera?.setVideoZoomFactor(zoomRatio)
+        currentCamera?.unlockForConfiguration()
     }
 
-    fun clearZoom(){
+    fun clearZoom() {
         currentCamera?.setVideoZoomFactor(0)
+    }
+
+    fun getMinFocusDistance(): Long? {
+        return currentCamera?.minimumFocusDistance
+    }
+
+    fun getFOV(): Double {
+        return currentCamera?.activeFormat?.videoFieldOfView!!.toDouble()
     }
 
     /**

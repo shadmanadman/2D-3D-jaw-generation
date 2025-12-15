@@ -3,12 +3,16 @@ package camera.controller
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Bitmap.createBitmap
+import android.hardware.camera2.CameraAccessException
+import android.hardware.camera2.CameraCharacteristics
+import android.hardware.camera2.CameraManager
 import android.hardware.camera2.CameraMetadata.LENS_FACING_BACK
 import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.FocusMeteringAction
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageCapture
+import androidx.camera.core.MeteringPoint
 import androidx.camera.core.Preview
 import androidx.camera.core.resolutionselector.AspectRatioStrategy
 import androidx.camera.core.resolutionselector.ResolutionSelector
@@ -22,8 +26,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import model.FocusPoints
+import model.MeteringPointPlatform
 import platform.SharedImage
 import java.util.concurrent.Executors
+import kotlin.math.atan
 
 actual class CameraController(
     val context: Context,
@@ -144,7 +150,7 @@ actual class CameraController(
 
         return withContext(Dispatchers.Main) {
             try {
-                val meteringPoint = previewView.meteringPointFactory.createPoint(
+                val meteringPoint = previewView?.meteringPointFactory!!.createPoint(
                     focusPoints.meteringPoint.x,
                     focusPoints.meteringPoint.y,
                     focusPoints.meteringPoint.size
@@ -160,20 +166,53 @@ actual class CameraController(
         }
     }
 
-    actual fun clearFocus(){
+    actual fun clearFocus() {
         camera?.cameraControl?.cancelFocusAndMetering()
     }
 
-    actual fun setZoom(zoomRatio: Float){
+    actual fun setZoom(zoomRatio: Float) {
         camera?.cameraControl?.setZoomRatio(zoomRatio)
     }
 
-    actual fun clearZoom(){
+    actual fun clearZoom() {
         camera?.cameraControl?.setZoomRatio(0f)
     }
 
-    actual fun getMinimumFocusDistance(): Float{}
-    actual fun getFOV(): Double{}
+    actual fun getMinFocusDistance(): Float {
+        val cameraManager =
+            context.getSystemService(Context.CAMERA_SERVICE) as CameraManager
+
+        try {
+            val cameraId = cameraManager.cameraIdList[0]
+            val characteristics = cameraManager.getCameraCharacteristics(cameraId)
+
+            val minFocusDistance =
+                characteristics.get(CameraCharacteristics.LENS_INFO_MINIMUM_FOCUS_DISTANCE)
+            return 1000 / (minFocusDistance ?: 0f)
+
+        } catch (e: CameraAccessException) {
+            e.printStackTrace()
+        }
+        return 0f
+    }
+
+    actual fun getFOV(): Double {
+        val cameraManager = context.getSystemService(Context.CAMERA_SERVICE) as CameraManager
+        val cameraId = cameraManager.cameraIdList[0]
+        val cameraCharacteristics = cameraManager.getCameraCharacteristics(cameraId)
+
+        val focalLengths =
+            cameraCharacteristics.get(CameraCharacteristics.LENS_INFO_AVAILABLE_FOCAL_LENGTHS)
+        val focalLength = focalLengths?.firstOrNull() ?: 0f
+        val sensorSize = cameraCharacteristics.get(CameraCharacteristics.SENSOR_INFO_PHYSICAL_SIZE)
+
+        val horizontalFOV = 2 * atan(sensorSize!!.width / (2 * focalLength.toDouble()))
+        val verticalFOV = 2 * atan(sensorSize.height / (2 * focalLength.toDouble()))
+
+        val m = Pair(Math.toDegrees(horizontalFOV), Math.toDegrees(verticalFOV))
+
+        return m.first
+    }
 }
 
 const val WAIT_FOR_FOCUS_TO_FINISH = 2000L

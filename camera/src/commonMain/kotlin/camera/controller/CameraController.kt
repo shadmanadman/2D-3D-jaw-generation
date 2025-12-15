@@ -10,6 +10,8 @@ expect class CameraController(){
     fun clearFocus()
     fun setZoom(zoomRatio: Float)
     fun clearZoom()
+    fun getMinFocusDistance(): Float
+    fun getFOV(): Double
     fun startSession()
     fun stopSession()
 }

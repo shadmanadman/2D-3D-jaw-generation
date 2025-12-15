@@ -26,7 +26,7 @@ import platform.UIKit.UIViewController
 actual class CameraController(
     internal var torchMode: TorchMode,
     internal var cameraDeviceType: String
-) : UIViewController(null, null){
+) : UIViewController(null, null) {
     private var isCapturing = atomic(false)
     private var metadataOutput = AVCaptureMetadataOutput()
     private var metadataObjectsDelegate: AVCaptureMetadataOutputObjectsDelegateProtocol? = null
@@ -115,20 +115,25 @@ actual class CameraController(
         return true
     }
 
-    actual fun clearFocus(){
+    actual fun clearFocus() {
         customCameraController.clearFocus()
     }
 
-    actual fun setZoom(zoomRatio: Float){
+    actual fun setZoom(zoomRatio: Float) {
         customCameraController.setZoom(zoomRatio.toDouble())
     }
 
-    actual fun clearZoom(){
+    actual fun clearZoom() {
         customCameraController.clearFocus()
     }
 
-    actual fun getMinFocusDistance(): Float{}
-    actual fun getFOV(): Double{}
+    actual fun getMinFocusDistance(): Float {
+        return customCameraController.getMinFocusDistance()?.toFloat() ?: 0f
+    }
+
+    actual fun getFOV(): Double {
+        return customCameraController.getFOV()
+    }
 
 
     private fun TorchMode.toAVCaptureTorchMode(): AVCaptureTorchMode = when (this) {

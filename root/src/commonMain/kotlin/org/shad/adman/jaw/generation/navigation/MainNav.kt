@@ -1,5 +1,5 @@
 package org.shad.adman.jaw.generation.navigation
 
-object MainNav : Navigation{
-    val root = Route(name = "root")
+object MainNav {
+    const val root = "/root"
 }

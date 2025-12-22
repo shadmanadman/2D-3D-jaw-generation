@@ -26,6 +26,7 @@ kotlin {
             implementation(libs.accompanist.permissions)
         }
         commonMain.dependencies {
+            implementation(compose.components.resources)
             implementation(compose.foundation)
         }
     }

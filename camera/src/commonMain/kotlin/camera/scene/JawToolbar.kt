@@ -34,7 +34,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import camera.viewmodel.JawViewModel
-import drawable.DrawableRes
+import resource.DrawableRes
 import model.JawType
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource

@@ -23,7 +23,8 @@ import camera.viewmodel.CameraViewModel
 import camera.viewmodel.JawViewModel
 import model.CameraErrorState
 import model.JawSide
-import string.en.StringRes
+import org.jetbrains.compose.resources.stringResource
+import resource.StringRes
 import theme.Secondary
 import theme.White
 import theme.appTypography
@@ -99,7 +100,7 @@ fun SeeResult(cameraViewModel: CameraViewModel, modifier: Modifier) {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = StringRes.see_result,
+                text = stringResource(StringRes.see_result),
                 color = White,
                 style = appTypography().body14
             )

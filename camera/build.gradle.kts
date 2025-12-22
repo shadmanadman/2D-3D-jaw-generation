@@ -42,7 +42,6 @@ kotlin {
             implementation(libs.kotlin.coroutines)
             api(project(":shared"))
             api(project(":detection"))
-            api(project(":resource"))
         }
         commonTest.dependencies {
         }

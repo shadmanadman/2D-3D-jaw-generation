@@ -15,9 +15,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import drawable.DrawableRes
+import resource.DrawableRes
 import org.jetbrains.compose.resources.painterResource
-import string.en.StringRes
+import org.jetbrains.compose.resources.stringResource
+import resource.StringRes
 import theme.Secondary
 import theme.White
 import theme.appTypography
@@ -53,7 +54,7 @@ fun CameraToolbar(onBackClick: () -> Unit, onHelpClick: () -> Unit) {
                     .clickable(onClick = { onBackClick() },
                         indication = null,
                         interactionSource = remember { MutableInteractionSource() }),
-                text = StringRes.close,
+                text = stringResource(StringRes.close),
                 style = appTypography().title15,
                 color = White
             )

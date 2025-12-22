@@ -21,26 +21,9 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import ext.toRadians
 import jaw_generation.jaw.generated.resources.Res
-import jaw_generation.jaw.generated.resources.ic_lower_jaw
-import jaw_generation.jaw.generated.resources.ic_teeth_01
-import jaw_generation.jaw.generated.resources.ic_teeth_02
-import jaw_generation.jaw.generated.resources.ic_teeth_03
-import jaw_generation.jaw.generated.resources.ic_teeth_04
-import jaw_generation.jaw.generated.resources.ic_teeth_05
-import jaw_generation.jaw.generated.resources.ic_teeth_06
-import jaw_generation.jaw.generated.resources.ic_teeth_07
-import jaw_generation.jaw.generated.resources.ic_teeth_08
-import jaw_generation.jaw.generated.resources.ic_upper_jaw
-import jaw_generation.jaw.generated.resources.teeth_indicator_advanced_1
-import jaw_generation.jaw.generated.resources.teeth_indicator_advanced_2
-import jaw_generation.jaw.generated.resources.teeth_indicator_advanced_3
-import jaw_generation.jaw.generated.resources.teeth_indicator_advanced_4
-import jaw_generation.jaw.generated.resources.teeth_indicator_advanced_5
-import jaw_generation.jaw.generated.resources.teeth_indicator_advanced_6
-import jaw_generation.jaw.generated.resources.teeth_indicator_advanced_7
-import jaw_generation.jaw.generated.resources.teeth_indicator_advanced_8
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import resource.DrawableRes
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -49,42 +32,42 @@ val jawIllustrationSize = 220.dp
 val rightTeethGroup = listOf(
     ToothSpec(
         id = 17,
-        drawable = Res.drawable.ic_teeth_01,
+        drawable = DrawableRes.tooth_illustration_1,
         angleDeg = 0f,
     ),
     ToothSpec(
         id = 18,
-        drawable = Res.drawable.ic_teeth_02,
+        drawable = DrawableRes.tooth_illustration_2,
         angleDeg = 12f,
     ),
     ToothSpec(
         id = 19,
-        drawable = Res.drawable.ic_teeth_03,
+        drawable = DrawableRes.tooth_illustration_3,
         angleDeg = 23f,
     ),
     ToothSpec(
         id = 20,
-        drawable = Res.drawable.ic_teeth_04,
+        drawable = DrawableRes.tooth_illustration_4,
         angleDeg = 35f
     ),
     ToothSpec(
         id = 21,
-        drawable = Res.drawable.ic_teeth_05,
+        drawable = DrawableRes.tooth_illustration_5,
         angleDeg = 44f,
     ),
     ToothSpec(
         id = 22,
-        drawable = Res.drawable.ic_teeth_06,
+        drawable = DrawableRes.tooth_illustration_6,
         angleDeg = 55f,
     ),
     ToothSpec(
         id = 23,
-        drawable = Res.drawable.ic_teeth_07,
+        drawable = DrawableRes.tooth_illustration_7,
         angleDeg = 67f,
     ),
     ToothSpec(
         id = 24,
-        drawable = Res.drawable.ic_teeth_08,
+        drawable = DrawableRes.tooth_illustration_8,
         angleDeg = 80f,
         rotation = 170f
     ),
@@ -93,49 +76,49 @@ val rightTeethGroup = listOf(
 val leftTeethGroup = listOf(
     ToothSpec(
         id = 25,
-        drawable = Res.drawable.ic_teeth_08,
+        drawable = DrawableRes.tooth_illustration_8,
         angleDeg = 96f,
         rotation = 198f
     ),
     ToothSpec(
         id = 26,
-        drawable = Res.drawable.ic_teeth_07,
+        drawable = DrawableRes.tooth_illustration_7,
         angleDeg = 111f,
         rotation = -110f
     ),
     ToothSpec(
         id = 27,
-        drawable = Res.drawable.ic_teeth_06,
+        drawable = DrawableRes.tooth_illustration_6,
         angleDeg = 124f,
         rotation = -90f
     ),
     ToothSpec(
         id = 28,
-        drawable = Res.drawable.ic_teeth_05,
+        drawable = DrawableRes.tooth_illustration_5,
         angleDeg = 135f,
         rotation = -70f
     ),
     ToothSpec(
         id = 29,
-        drawable = Res.drawable.ic_teeth_04,
+        drawable = DrawableRes.tooth_illustration_4,
         angleDeg = 145f,
         rotation = -50f
     ),
     ToothSpec(
         id = 30,
-        drawable = Res.drawable.ic_teeth_03,
+        drawable = DrawableRes.tooth_illustration_3,
         angleDeg = 157f,
         rotation = -30f
     ),
     ToothSpec(
         id = 31,
-        drawable = Res.drawable.ic_teeth_02,
+        drawable = DrawableRes.tooth_illustration_2,
         angleDeg = 167f,
         rotation = -10f
     ),
     ToothSpec(
         id = 32,
-        drawable = Res.drawable.ic_teeth_01,
+        drawable = DrawableRes.tooth_illustration_1,
         angleDeg = 180f,
         rotation = 0f
     ),
@@ -165,7 +148,8 @@ fun JawIllustrationScene() {
 
 @Composable
 fun Jaw(isUpper: Boolean = false) {
-    val jawContainerDrawable = if (isUpper) Res.drawable.ic_upper_jaw else Res.drawable.ic_lower_jaw
+    val jawContainerDrawable =
+        if (isUpper) DrawableRes.upper_jaw_illustration else DrawableRes.lower_jaw_illustration
     val alignment = if (isUpper) Alignment.BottomCenter else Alignment.TopCenter
     val startPadding = if (isUpper) 0.dp else 6.dp
     BoxWithConstraints(modifier = Modifier.size(jawIllustrationSize)) {

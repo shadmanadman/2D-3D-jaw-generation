@@ -1,0 +1,97 @@
+package shared.ui
+
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Canvas
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.util.lerp
+import kotlinx.coroutines.delay
+
+@Composable
+fun heartBeatScale(): State<Float> {
+    val scale = remember { Animatable(1f) }
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            repeat(2) {
+                scale.animateTo(
+                    targetValue = 1.12f, animationSpec = tween(240, easing = LinearEasing)
+                )
+                scale.animateTo(
+                    targetValue = 1f, animationSpec = tween(140, easing = LinearEasing)
+                )
+            }
+            delay(1500)
+        }
+    }
+
+    return scale.asState()
+}
+
+
+@Composable
+fun AnimatedRgbBorder(
+    modifier: Modifier = Modifier,
+    strokeWidth: Dp = 4.dp,
+    reversePulse: Boolean = false,
+    hasPulse: Boolean = false
+) {
+    val pulseInitialValue = if (reversePulse) 1f else 0f
+    val pulseTargetValue = if (reversePulse) 0f else 1f
+
+    val infiniteTransition = rememberInfiniteTransition(label = "rgb")
+
+    val hue by infiniteTransition.animateFloat(
+        initialValue = 0f, targetValue = 360f, animationSpec = infiniteRepeatable(
+            animation = tween(2000, easing = LinearEasing)
+        ), label = "hue"
+    )
+
+
+    val infinitePulseTransition = rememberInfiniteTransition(label = "pulse")
+
+    val pulseProgress by infinitePulseTransition.animateFloat(
+        initialValue = pulseInitialValue,
+        targetValue = pulseTargetValue,
+        animationSpec = infiniteRepeatable(
+            animation = tween(
+                durationMillis = 1500, easing = FastOutSlowInEasing
+            )
+        ),
+        label = "pulseProgress"
+    )
+
+    Canvas(modifier = modifier) {
+        val radius = if (!hasPulse)
+            size.minDimension / 2
+        else
+            lerp(
+                0f, size.minDimension, pulseProgress
+            )
+        drawCircle(
+            brush = Brush.sweepGradient(
+                colors = listOf(
+                    Color.hsv(hue, 1f, 1f),
+                    Color.hsv((hue + 120) % 360, 1f, 1f),
+                    Color.hsv((hue + 240) % 360, 1f, 1f),
+                    Color.hsv(hue, 1f, 1f)
+                )
+            ), radius = radius, style = Stroke(strokeWidth.toPx())
+        )
+    }
+}

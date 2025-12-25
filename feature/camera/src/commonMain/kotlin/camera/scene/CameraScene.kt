@@ -21,13 +21,13 @@ import androidx.compose.ui.zIndex
 import camera.viewmodel.AnalyzerViewModel
 import camera.viewmodel.CameraViewModel
 import camera.viewmodel.JawViewModel
-import model.CameraErrorState
-import model.JawSide
+import shared.model.CameraErrorState
+import shared.model.JawSide
 import org.jetbrains.compose.resources.stringResource
-import resource.StringRes
-import theme.Secondary
-import theme.White
-import theme.appTypography
+import shared.resource.StringRes
+import shared.theme.Secondary
+import shared.theme.White
+import shared.theme.appTypography
 
 @Composable
 fun CameraScreen(

@@ -2,10 +2,10 @@ package detector
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import model.JawSide
-import model.JawType
-import model.ToothDetectionStatus
-import model.ToothNumber
+import shared.model.JawSide
+import shared.model.JawType
+import shared.model.ToothDetectionStatus
+import shared.model.ToothNumber
 object SideDetector {
 
     private val _upperIllustrationTeeth = MutableStateFlow(

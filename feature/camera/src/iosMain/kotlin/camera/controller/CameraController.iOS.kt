@@ -3,7 +3,7 @@ package camera.controller
 import kotlinx.atomicfu.atomic
 import kotlinx.cinterop.CValue
 import kotlinx.cinterop.ExperimentalForeignApi
-import model.FocusPoints
+import shared.model.FocusPoints
 import platform.AVFoundation.AVCaptureMetadataOutput
 import platform.AVFoundation.AVCaptureMetadataOutputObjectsDelegateProtocol
 import platform.AVFoundation.AVCaptureTorchMode
@@ -16,9 +16,8 @@ import platform.AVFoundation.AVCaptureVideoOrientationLandscapeRight
 import platform.AVFoundation.AVCaptureVideoOrientationPortrait
 import platform.AVFoundation.AVCaptureVideoOrientationPortraitUpsideDown
 import platform.CoreGraphics.CGPoint
-import platform.CoreGraphics.CGFloat
 import platform.CoreGraphics.CGPointMake
-import platform.SharedImage
+import shared.platform.SharedImage
 import platform.UIKit.UIDevice
 import platform.UIKit.UIDeviceOrientation
 import platform.UIKit.UIViewController

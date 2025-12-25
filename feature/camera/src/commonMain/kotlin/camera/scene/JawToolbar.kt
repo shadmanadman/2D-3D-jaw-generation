@@ -34,15 +34,14 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import camera.viewmodel.JawViewModel
-import resource.DrawableRes
-import model.JawType
+import shared.resource.DrawableRes
+import shared.model.JawType
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
-import theme.Accent
-import theme.Secondary
-import theme.White
-import theme.appTypography
+import shared.theme.Accent
+import shared.theme.Secondary
+import shared.theme.White
+import shared.theme.appTypography
 
 @Composable
 fun JawToolbar(

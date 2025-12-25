@@ -1,4 +1,4 @@
-package platform
+package shared.platform
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -24,7 +24,8 @@ actual fun createPermissionsManager(callback: PermissionCallback): PermissionHan
     return PermissionsManager(callback)
 }
 
-class PermissionsManager  constructor(private val callback: PermissionCallback) : PermissionHandler {
+class PermissionsManager  constructor(private val callback: PermissionCallback) :
+    PermissionHandler {
     @Composable
      override fun AskPermission(permission: PermissionType) {
         when (permission) {

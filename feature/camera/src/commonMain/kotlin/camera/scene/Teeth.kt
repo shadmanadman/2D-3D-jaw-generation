@@ -23,14 +23,14 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import camera.viewmodel.JawViewModel
-import resource.DrawableRes.detected_teeth_stage
-import resource.DrawableRes.not_detected_teeth_stage
-import ext.toIconIndex
-import model.JawSide
-import model.ToothDetectionStatus
+import shared.resource.DrawableRes.detected_teeth_stage
+import shared.resource.DrawableRes.not_detected_teeth_stage
+import shared.ext.toIconIndex
+import shared.model.JawSide
+import shared.model.ToothDetectionStatus
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
-import theme.Secondary
+import shared.theme.Secondary
 
 private const val ROTATE_AROUND = 180f
 

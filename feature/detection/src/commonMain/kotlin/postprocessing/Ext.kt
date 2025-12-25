@@ -6,7 +6,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
-import model.ToothBox
+import shared.model.ToothBox
 
 // Create a cropped bitmap of the tooth using the specified rectangle
 fun ImageBitmap.cropInRect(rect: Rect): ImageBitmap {

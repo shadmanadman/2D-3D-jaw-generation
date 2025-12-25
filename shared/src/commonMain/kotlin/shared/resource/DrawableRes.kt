@@ -1,4 +1,4 @@
-package resource
+package shared.resource
 
 import shared.resources.Res
 import shared.resources.ic_close

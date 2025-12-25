@@ -3,21 +3,20 @@ package camera.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import detector.SideDetector.getIncompleteSide
-import ext.convertToJawStatus
+import shared.ext.convertToJawStatus
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import model.FrameAnalyzeStatus
-import model.JawSide
-import model.JawSideStatus
-import model.JawType
-import model.ToothDetectionStatus
-import model.ToothNumber
+import shared.model.FrameAnalyzeStatus
+import shared.model.JawSide
+import shared.model.JawSideStatus
+import shared.model.JawType
+import shared.model.ToothDetectionStatus
+import shared.model.ToothNumber
 import kotlin.collections.set
-import kotlin.text.toInt
 
 typealias JawProgress = Map<JawType, Int>
 

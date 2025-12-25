@@ -1,4 +1,4 @@
-package platform
+package shared.platform
 
 import android.Manifest
 import android.content.Intent
@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
@@ -25,7 +26,7 @@ class PermissionsManager constructor(private val callback: PermissionCallback) :
     @OptIn(ExperimentalPermissionsApi::class)
     @Composable
     override fun AskPermission(permission: PermissionType) {
-        val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
+        val lifecycleOwner = LocalLifecycleOwner.current
         when(permission){
             PermissionType.CAMERA -> {
                 val cameraPermissionState = rememberPermissionState(Manifest.permission.CAMERA)

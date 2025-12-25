@@ -15,13 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import resource.DrawableRes
+import shared.resource.DrawableRes
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import resource.StringRes
-import theme.Secondary
-import theme.White
-import theme.appTypography
+import shared.resource.StringRes
+import shared.theme.Secondary
+import shared.theme.White
+import shared.theme.appTypography
 
 @Composable
 fun CameraToolbar(onBackClick: () -> Unit, onHelpClick: () -> Unit) {

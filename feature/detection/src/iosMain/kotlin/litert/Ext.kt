@@ -26,7 +26,7 @@ internal fun TFLTensor.toTensor() = Tensor(this)
 
 internal fun TensorShape.getNSNumberDimensionList() = dimensions.map(::NSNumber)
 
-internal fun ByteArray.writeToTempFile(prefix: String = "model", suffix: String = ".tflite"): String {
+internal fun ByteArray.writeToTempFile(prefix: String = "shared/model", suffix: String = ".tflite"): String {
     val tempDir = NSTemporaryDirectory()
     val filePath = "$tempDir/$prefix$suffix"
     val nsData = this.toNSData()

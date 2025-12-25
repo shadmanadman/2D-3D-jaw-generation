@@ -17,11 +17,11 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
-import ext.toRadians
+import shared.ext.toRadians
 
 import org.jetbrains.compose.resources.painterResource
 
-import resource.DrawableRes
+import shared.resource.DrawableRes
 import kotlin.math.cos
 import kotlin.math.sin
 

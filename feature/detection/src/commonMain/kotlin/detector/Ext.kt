@@ -4,10 +4,10 @@ import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Paint
-import ext.resize
-import model.JawSide
-import model.JawType
-import model.ToothNumber
+import shared.ext.resize
+import shared.model.JawSide
+import shared.model.JawType
+import shared.model.ToothNumber
 import kotlin.math.max
 
 fun ImageBitmap.squareMe(maxBound: Int = 640): ImageBitmap {

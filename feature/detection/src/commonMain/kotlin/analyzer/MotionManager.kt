@@ -1,8 +1,8 @@
 package analyzer
 
-import model.JawSide
-import model.JawType
-import model.ToothBox
+import shared.model.JawSide
+import shared.model.JawType
+import shared.model.ToothBox
 
 
 expect object MotionListener {

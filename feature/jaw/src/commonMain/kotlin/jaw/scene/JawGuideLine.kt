@@ -11,9 +11,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import org.jetbrains.compose.resources.stringResource
-import resource.StringRes
-import theme.White
-import theme.appTypography
+import shared.resource.StringRes
+import shared.theme.White
+import shared.theme.appTypography
 
 @Preview
 @Composable

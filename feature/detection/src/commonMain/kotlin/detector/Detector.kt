@@ -1,17 +1,14 @@
 package detector
 
-import androidx.compose.ui.graphics.ImageBitmap
-import ext.resize
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.produce
 import litert.Litert
 import litert.ModelOutputReshaped
-import litert.toScaledByteBuffer
-import model.Box
-import model.JawType
-import model.ToothBox
+import shared.model.Box
+import shared.model.JawType
+import shared.model.ToothBox
 
 const val INPUT_IMAGE_SIZE = 640F
 const val IOU_THRESHOLD = 0.50F

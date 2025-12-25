@@ -1,9 +1,9 @@
-package ext
+package shared.ext
 
-import model.JawSide
-import model.JawSideStatus
-import model.JawType
-import model.ToothNumber
+import shared.model.JawSide
+import shared.model.JawSideStatus
+import shared.model.JawType
+import shared.model.ToothNumber
 
 fun convertToJawStatus(jawSide: JawSide, jawType: JawType): JawSideStatus {
     return when (jawType) {

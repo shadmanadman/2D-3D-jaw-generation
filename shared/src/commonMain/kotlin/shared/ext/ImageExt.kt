@@ -1,4 +1,4 @@
-package ext
+package shared.ext
 
 import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.ImageBitmap

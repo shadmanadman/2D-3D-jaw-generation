@@ -1,4 +1,4 @@
-package model
+package shared.model
 
 enum class FocusSection {
     NEAR,

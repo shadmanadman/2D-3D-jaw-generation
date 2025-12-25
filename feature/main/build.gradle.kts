@@ -10,6 +10,7 @@ kotlin {
         namespace = "org.shad.adman.jaw.generation.main"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
+        androidResources.enable = true
     }
 
     listOf(
@@ -23,6 +24,7 @@ kotlin {
     }
     sourceSets {
         androidMain.dependencies {
+            implementation(libs.ui.tooling)
         }
 
         commonMain.dependencies {
@@ -32,7 +34,13 @@ kotlin {
             implementation(libs.material3)
             implementation(libs.ui)
             implementation(libs.components.resources)
+            implementation(libs.kotlin.coroutines)
+
             implementation(project(":shared"))
         }
     }
+}
+
+dependencies {
+    "androidRuntimeClasspath"(libs.androidx.compose.ui.tooling)
 }

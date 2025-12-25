@@ -1,7 +1,7 @@
 package postprocessing
 
-import model.AcceptedFrame
-import model.JawSide
+import shared.model.AcceptedFrame
+import shared.model.JawSide
 
 
 data class FrameScore(

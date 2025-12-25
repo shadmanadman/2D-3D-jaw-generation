@@ -2,15 +2,15 @@ package camera.controller
 
 import camera.viewmodel.CameraViewModel
 import camera.viewmodel.JawViewModel
-import ext.convertToJawStatus
+import shared.ext.convertToJawStatus
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.suspendCancellableCoroutine
-import model.FocusPoints
-import model.FocusSection
-import model.JawSide
-import model.JawType
-import model.MeteringPointPlatform
-import model.ToothBox
+import shared.model.FocusPoints
+import shared.model.FocusSection
+import shared.model.JawSide
+import shared.model.JawType
+import shared.model.MeteringPointPlatform
+import shared.model.ToothBox
 import kotlin.coroutines.resume
 
 object FocusManager {

@@ -2,7 +2,7 @@ package postprocessing
 
 import analyzer.IMAGE_TYPE_LOWER
 import analyzer.IMAGE_TYPE_UPPER
-import model.ToothBox
+import shared.model.ToothBox
 import kotlin.math.abs
 
 object FrontNumbering {

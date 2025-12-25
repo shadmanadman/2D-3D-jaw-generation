@@ -1,8 +1,8 @@
 package postprocessing
 
-import model.JawSide
-import model.JawType
-import model.ToothBox
+import shared.model.JawSide
+import shared.model.JawType
+import shared.model.ToothBox
 
 private const val TENSOR_IMAGE_SIZE = 640F
 private const val IOU_THRESHOLD = 0.50F

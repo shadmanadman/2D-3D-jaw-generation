@@ -5,12 +5,10 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import model.AcceptedFrame
-import model.DetectingStatus
-import model.FocusSection
-import model.FrameAnalyzeStatus
-import model.JawSideStatus
-import model.ToothNumber
+import shared.model.AcceptedFrame
+import shared.model.DetectingStatus
+import shared.model.FocusSection
+import shared.model.ToothNumber
 import postprocessing.NumberingResult
 
 

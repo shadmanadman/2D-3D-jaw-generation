@@ -1,4 +1,4 @@
-package theme
+package shared.theme
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle

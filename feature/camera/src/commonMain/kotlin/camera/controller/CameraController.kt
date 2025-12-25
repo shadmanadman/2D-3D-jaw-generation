@@ -1,7 +1,7 @@
 package camera.controller
 
-import model.FocusPoints
-import platform.SharedImage
+import shared.model.FocusPoints
+import shared.platform.SharedImage
 
 expect class CameraController{
     var onImageAvailable: ((SharedImage?) -> Unit)?

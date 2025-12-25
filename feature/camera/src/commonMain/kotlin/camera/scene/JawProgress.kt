@@ -22,14 +22,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import camera.viewmodel.JawViewModel
-import resource.DrawableRes
-import model.JawType
+import shared.resource.DrawableRes
+import shared.model.JawType
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import resource.StringRes
-import theme.Transparent
-import theme.White
-import theme.appTypography
+import shared.resource.StringRes
+import shared.theme.Transparent
+import shared.theme.White
+import shared.theme.appTypography
 
 @Composable
 fun CameraJawSection(

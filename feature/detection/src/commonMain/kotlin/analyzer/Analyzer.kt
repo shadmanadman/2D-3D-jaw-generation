@@ -5,9 +5,9 @@ import detector.calculateNormalizedPadding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.produce
-import model.JawSide
-import model.JawType
-import model.ToothBox
+import shared.model.JawSide
+import shared.model.JawType
+import shared.model.ToothBox
 import postprocessing.FrontNumbering
 import postprocessing.OutputProcessing
 import postprocessing.UpperLowerNumbering

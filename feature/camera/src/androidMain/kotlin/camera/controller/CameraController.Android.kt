@@ -23,8 +23,8 @@ import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
-import model.FocusPoints
-import platform.SharedImage
+import shared.model.FocusPoints
+import shared.platform.SharedImage
 import java.util.concurrent.Executors
 import kotlin.math.atan
 

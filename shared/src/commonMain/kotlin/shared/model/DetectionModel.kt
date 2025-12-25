@@ -1,4 +1,4 @@
-package model
+package shared.model
 
 import androidx.compose.ui.graphics.ImageBitmap
 

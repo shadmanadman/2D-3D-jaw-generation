@@ -1,4 +1,4 @@
-package platform
+package shared.platform
 
 import androidx.compose.runtime.Composable
 

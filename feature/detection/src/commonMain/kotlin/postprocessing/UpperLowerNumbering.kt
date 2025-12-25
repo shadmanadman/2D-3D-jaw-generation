@@ -1,7 +1,7 @@
 package postprocessing
 
 
-import model.ToothBox
+import shared.model.ToothBox
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.pow

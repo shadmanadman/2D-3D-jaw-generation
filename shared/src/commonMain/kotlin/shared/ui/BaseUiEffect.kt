@@ -1,4 +1,4 @@
-package ui
+package shared.ui
 
 enum class InAppMessageType {ERROR, WARNING, INFO, SUCCESS}
 data class InAppMessageData(val msg: String = "",val type: InAppMessageType)

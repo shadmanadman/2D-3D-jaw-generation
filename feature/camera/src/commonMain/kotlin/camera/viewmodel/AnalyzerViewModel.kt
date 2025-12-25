@@ -3,7 +3,7 @@ package camera.viewmodel
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import litert.Litert
-import model.JawType
+import shared.model.JawType
 import postprocessing.NumberingResult
 
 private const val SEGMENT_UPPER_MODEL_NAME = "detection_upper_float32.tflite"

@@ -3,14 +3,12 @@ package litert
 import android.content.Context
 import com.google.ai.edge.litert.Accelerator
 import com.google.ai.edge.litert.CompiledModel
-import com.google.ai.edge.litert.Model
 import com.google.ai.edge.litert.TensorBuffer
 import startup.AppContext
 import java.nio.ByteBuffer
 
-actual class Interpreter actual constructor(model: ByteArray) {
+actual class Interpreter actual constructor(val model: ByteArray) {
     private val context: Context by lazy { AppContext.get() }
-    private val model = Model.load(model.writeToTempFile(context).path)
     private lateinit var compiledModel : CompiledModel
     private lateinit var inputBuffers : List<TensorBuffer>
     private lateinit var outputBuffers : List<TensorBuffer>
@@ -18,7 +16,7 @@ actual class Interpreter actual constructor(model: ByteArray) {
     private val tensorFlowInterpreter = PlatformInterpreter(model)
 
     actual fun init(){
-        compiledModel = CompiledModel.create(model = model, options = CompiledModel.Options(Accelerator.GPU))
+        compiledModel = CompiledModel.create(filePath = model.writeToTempFile(context).path, options = CompiledModel.Options(Accelerator.GPU))
         inputBuffers = compiledModel.createInputBuffers()
         outputBuffers = compiledModel.createOutputBuffers()
     }

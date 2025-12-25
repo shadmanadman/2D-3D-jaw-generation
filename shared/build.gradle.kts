@@ -1,6 +1,3 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
@@ -13,6 +10,7 @@ kotlin {
         namespace = "org.shad.adman.jaw.generation.shared"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
+        androidResources.enable = true
     }
 
 
@@ -28,10 +26,15 @@ kotlin {
     sourceSets {
         androidMain.dependencies {
             implementation(libs.accompanist.permissions)
+            implementation(libs.ui.tooling)
         }
         commonMain.dependencies {
-            implementation(compose.components.resources)
-            implementation(compose.foundation)
+            implementation(libs.foundation)
+            implementation(libs.components.resources)
+            implementation(libs.ui.tooling.preview)
+            implementation(libs.runtime)
+            implementation(libs.material3)
+            implementation(libs.ui)
         }
     }
 

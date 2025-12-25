@@ -25,7 +25,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlin.coroutines)
-            implementation(compose.foundation)
+            implementation(libs.foundation)
         }
     }
 }

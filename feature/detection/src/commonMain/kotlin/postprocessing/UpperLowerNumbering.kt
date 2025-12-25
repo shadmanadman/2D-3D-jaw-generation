@@ -416,8 +416,7 @@ object UpperLowerNumbering {
                         rightSortedInd.isNotEmpty() -> {
                             // Here the box were required int but rightSortedInd.last() was float so i convert it to int
                             if (abs(
-                                    mutableBoxes[rightSortedInd.last()
-                                        .toInt()].x - mutableBoxes[i].x
+                                    mutableBoxes[rightSortedInd.last()].x - mutableBoxes[i].x
                                 ) < 0.4
                             ) {
                                 rightBoxes.add(i)
@@ -432,8 +431,7 @@ object UpperLowerNumbering {
 
                         leftSortedInd.isNotEmpty() -> {
                             if (abs(
-                                    mutableBoxes[leftSortedInd.first()
-                                        .toInt()].x - mutableBoxes[i].x
+                                    mutableBoxes[leftSortedInd.first()].x - mutableBoxes[i].x
                                 ) < 0.4
                             ) {
                                 leftBoxes.add(i)

@@ -29,12 +29,12 @@ kotlin {
             implementation(libs.ui.tooling)
         }
         commonMain.dependencies {
-            implementation(libs.foundation)
-            implementation(libs.components.resources)
-            implementation(libs.ui.tooling.preview)
-            implementation(libs.runtime)
-            implementation(libs.material3)
-            implementation(libs.ui)
+            api(libs.foundation)
+            api(libs.components.resources)
+            api(libs.ui.tooling.preview)
+            api(libs.runtime)
+            api(libs.material3)
+            api(libs.ui)
         }
     }
 

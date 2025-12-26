@@ -1,4 +1,4 @@
-package org.shad.adman.jaw.generation.navigation
+package shared.navigation
 
 object CameraNav {
     const val preview = "/preview"

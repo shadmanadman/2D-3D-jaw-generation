@@ -21,15 +21,15 @@ import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.navigation.rememberNavigator
 import moe.tlaster.precompose.navigation.transition.NavTransition
-import org.shad.adman.jaw.generation.navigation.MainNav
+import shared.navigation.MainNav
 import shared.platform.PermissionCallback
 import shared.platform.PermissionStatus
 import shared.platform.PermissionType
 import shared.platform.createPermissionsManager
 import shared.theme.Black
+import view.scene.MainScene
 
 @Composable
-@Preview
 fun Root() {
     PreComposeApp {
         val navigator = rememberNavigator()
@@ -39,22 +39,26 @@ fun Root() {
                 navTransition = NavTransition(),
                 initialRoute = MainNav.main
             ) {
-
+                scene(route = MainNav.main) {
+                    MainScene(onNavigate = {
+                        navigator.navigate(it)
+                    })
+                }
             }
 
-            RootCameraPreview(cameraPreviewMode = defineCameraPreviewModel(navigator))
+            RootCameraPreview(cameraPreviewMode = defineCameraPreviewMode(navigator))
         }
     }
 }
 
-private enum class CameraPreviewMode{PreviewBlurred,Detection,DoNotShow}
+private enum class CameraPreviewMode{PreviewBlurred,Preview,NoPreview}
 @Composable
-private fun defineCameraPreviewModel(navigator: Navigator): CameraPreviewMode {
+private fun defineCameraPreviewMode(navigator: Navigator): CameraPreviewMode {
     val currentEntry by navigator.currentEntry.collectAsState(null)
     val currentRoute = currentEntry?.route?.route
     return when (currentRoute) {
         MainNav.main -> CameraPreviewMode.PreviewBlurred
-        else -> CameraPreviewMode.DoNotShow
+        else -> CameraPreviewMode.NoPreview
     }
 }
 
@@ -85,7 +89,7 @@ private fun RootCameraPreview(cameraPreviewMode: CameraPreviewMode) {
     if (permissionsManager.isPermissionGranted(PermissionType.CAMERA).not())
         permissionsManager.AskPermission(PermissionType.CAMERA)
 
-    if (cameraPermissionState && (cameraPreviewMode == CameraPreviewMode.PreviewBlurred || cameraPreviewMode == CameraPreviewMode.Detection))
+    if (cameraPermissionState && (cameraPreviewMode == CameraPreviewMode.PreviewBlurred || cameraPreviewMode == CameraPreviewMode.Preview))
         Box(modifier = Modifier.fillMaxSize()) {
             CameraPreview(
                 modifier = Modifier.fillMaxSize(),

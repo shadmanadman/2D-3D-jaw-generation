@@ -27,19 +27,11 @@ kotlin {
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
-            implementation(libs.ui.tooling.preview)
-            implementation(libs.runtime)
-            implementation(libs.foundation)
-            implementation(libs.material3)
-            implementation(libs.ui)
-            implementation(libs.androidx.lifecycle.viewmodelCompose)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.precompose.core)
 
-            implementation(libs.koin.compose)
-            implementation(libs.koin.core)
+            api(project(":shared"))
 
-            implementation(project(":shared"))
+            implementation(project(":feature:main"))
             implementation(project(":feature:camera"))
         }
         commonTest.dependencies {

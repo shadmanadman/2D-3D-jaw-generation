@@ -30,7 +30,12 @@ import shared.ui.heartBeatScale
 
 @Preview
 @Composable
-fun MainScene() {
+fun MainScenePreview(){
+    MainScene(onNavigate = {})
+}
+
+@Composable
+fun MainScene(onNavigate:(String)->Unit) {
 
     Box(modifier = Modifier.fillMaxSize().padding(18.dp)) {
         Text(

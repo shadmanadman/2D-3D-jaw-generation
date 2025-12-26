@@ -20,8 +20,18 @@ import androidx.compose.ui.unit.dp
 import shared.ext.toRadians
 
 import org.jetbrains.compose.resources.painterResource
+import shared.resources.Res
+import shared.resources.ic_lower_jaw
+import shared.resources.ic_teeth_01
+import shared.resources.ic_teeth_02
+import shared.resources.ic_teeth_03
+import shared.resources.ic_teeth_04
+import shared.resources.ic_teeth_05
+import shared.resources.ic_teeth_06
+import shared.resources.ic_teeth_07
+import shared.resources.ic_teeth_08
+import shared.resources.ic_upper_jaw
 
-import shared.resource.DrawableRes
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -30,42 +40,42 @@ val jawIllustrationSize = 220.dp
 val rightTeethGroup = listOf(
     ToothSpec(
         id = 17,
-        drawable = DrawableRes.tooth_illustration_1,
+        drawable = Res.drawable.ic_teeth_01,
         angleDeg = 0f,
     ),
     ToothSpec(
         id = 18,
-        drawable = DrawableRes.tooth_illustration_2,
+        drawable = Res.drawable.ic_teeth_02,
         angleDeg = 12f,
     ),
     ToothSpec(
         id = 19,
-        drawable = DrawableRes.tooth_illustration_3,
+        drawable = Res.drawable.ic_teeth_03,
         angleDeg = 23f,
     ),
     ToothSpec(
         id = 20,
-        drawable = DrawableRes.tooth_illustration_4,
+        drawable = Res.drawable.ic_teeth_04,
         angleDeg = 35f
     ),
     ToothSpec(
         id = 21,
-        drawable = DrawableRes.tooth_illustration_5,
+        drawable = Res.drawable.ic_teeth_05,
         angleDeg = 44f,
     ),
     ToothSpec(
         id = 22,
-        drawable = DrawableRes.tooth_illustration_6,
+        drawable = Res.drawable.ic_teeth_06,
         angleDeg = 55f,
     ),
     ToothSpec(
         id = 23,
-        drawable = DrawableRes.tooth_illustration_7,
+        drawable = Res.drawable.ic_teeth_07,
         angleDeg = 67f,
     ),
     ToothSpec(
         id = 24,
-        drawable = DrawableRes.tooth_illustration_8,
+        drawable = Res.drawable.ic_teeth_08,
         angleDeg = 80f,
         rotation = 170f
     ),
@@ -74,49 +84,49 @@ val rightTeethGroup = listOf(
 val leftTeethGroup = listOf(
     ToothSpec(
         id = 25,
-        drawable = DrawableRes.tooth_illustration_8,
+        drawable = Res.drawable.ic_teeth_08,
         angleDeg = 96f,
         rotation = 198f
     ),
     ToothSpec(
         id = 26,
-        drawable = DrawableRes.tooth_illustration_7,
+        drawable = Res.drawable.ic_teeth_07,
         angleDeg = 111f,
         rotation = -110f
     ),
     ToothSpec(
         id = 27,
-        drawable = DrawableRes.tooth_illustration_6,
+        drawable = Res.drawable.ic_teeth_06,
         angleDeg = 124f,
         rotation = -90f
     ),
     ToothSpec(
         id = 28,
-        drawable = DrawableRes.tooth_illustration_5,
+        drawable = Res.drawable.ic_teeth_05,
         angleDeg = 135f,
         rotation = -70f
     ),
     ToothSpec(
         id = 29,
-        drawable = DrawableRes.tooth_illustration_4,
+        drawable = Res.drawable.ic_teeth_04,
         angleDeg = 145f,
         rotation = -50f
     ),
     ToothSpec(
         id = 30,
-        drawable = DrawableRes.tooth_illustration_3,
+        drawable = Res.drawable.ic_teeth_03,
         angleDeg = 157f,
         rotation = -30f
     ),
     ToothSpec(
         id = 31,
-        drawable = DrawableRes.tooth_illustration_2,
+        drawable = Res.drawable.ic_teeth_02,
         angleDeg = 167f,
         rotation = -10f
     ),
     ToothSpec(
         id = 32,
-        drawable = DrawableRes.tooth_illustration_1,
+        drawable = Res.drawable.ic_teeth_01,
         angleDeg = 180f,
         rotation = 0f
     ),
@@ -147,7 +157,7 @@ fun JawIllustrationScene() {
 @Composable
 fun Jaw(isUpper: Boolean = false) {
     val jawContainerDrawable =
-        if (isUpper) DrawableRes.upper_jaw_illustration else DrawableRes.lower_jaw_illustration
+        if (isUpper) Res.drawable.ic_upper_jaw else Res.drawable.ic_lower_jaw
     val alignment = if (isUpper) Alignment.BottomCenter else Alignment.TopCenter
     val startPadding = if (isUpper) 0.dp else 6.dp
     BoxWithConstraints(modifier = Modifier.size(jawIllustrationSize)) {

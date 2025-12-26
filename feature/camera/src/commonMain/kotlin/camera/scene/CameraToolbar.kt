@@ -15,10 +15,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import shared.resource.DrawableRes
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import shared.resource.StringRes
+import shared.resources.close
+import shared.resources.ic_close
+import shared.resources.ic_info_circle
+import shared.resources.ic_lighting
 import shared.theme.Secondary
 import shared.theme.White
 import shared.theme.appTypography
@@ -40,7 +42,7 @@ fun CameraToolbar(onBackClick: () -> Unit, onHelpClick: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(DrawableRes.close),
+                painter = painterResource(shared.resources.Res.drawable.ic_close),
                 colorFilter = ColorFilter.tint(
                     White
                 ),
@@ -54,7 +56,7 @@ fun CameraToolbar(onBackClick: () -> Unit, onHelpClick: () -> Unit) {
                     .clickable(onClick = { onBackClick() },
                         indication = null,
                         interactionSource = remember { MutableInteractionSource() }),
-                text = stringResource(StringRes.close),
+                text = stringResource(shared.resources.Res.string.close),
                 style = appTypography().title15,
                 color = White
             )
@@ -68,7 +70,7 @@ fun CameraToolbar(onBackClick: () -> Unit, onHelpClick: () -> Unit) {
                     indication = null,
                     interactionSource = remember { MutableInteractionSource() })
                 .padding(end = 24.dp),
-            painter = painterResource(DrawableRes.info),
+            painter = painterResource(shared.resources.Res.drawable.ic_info_circle),
             colorFilter = ColorFilter.tint(
                 Secondary
             ),
@@ -77,7 +79,7 @@ fun CameraToolbar(onBackClick: () -> Unit, onHelpClick: () -> Unit) {
 
         // The torch is on for camera
         Image(
-            painter = painterResource(DrawableRes.lightening), colorFilter = ColorFilter.tint(
+            painter = painterResource(shared.resources.Res.drawable.ic_lighting), colorFilter = ColorFilter.tint(
                 Color.White
             ), contentDescription = "Torch is on"
         )

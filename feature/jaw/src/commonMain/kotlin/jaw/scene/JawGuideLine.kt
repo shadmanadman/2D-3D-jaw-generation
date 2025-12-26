@@ -11,7 +11,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import org.jetbrains.compose.resources.stringResource
-import shared.resource.StringRes
+import shared.resources.left
+import shared.resources.lower
+import shared.resources.right
+import shared.resources.upper
 import shared.theme.White
 import shared.theme.appTypography
 
@@ -26,7 +29,7 @@ fun JawGuideLine() {
 
 
         Text(
-            text = stringResource(StringRes.right),
+            text = stringResource(shared.resources.Res.string.right),
             style = appTypography().title18.copy(fontWeight = FontWeight.Bold, color = White),
             modifier = Modifier.constrainAs(textViewJawRight) {
                 start.linkTo(parent.start, margin = 60.dp)
@@ -35,7 +38,7 @@ fun JawGuideLine() {
             })
 
         Text(
-            text = stringResource(StringRes.left),
+            text = stringResource(shared.resources.Res.string.left),
             style = appTypography().title18.copy(fontWeight = FontWeight.Bold, color = White),
             modifier = Modifier.padding(start = 8.dp, end = 8.dp).constrainAs(textViewJawLeft) {
                 end.linkTo(parent.end, margin = 60.dp)
@@ -44,7 +47,7 @@ fun JawGuideLine() {
             })
 
         Text(
-            text = stringResource(StringRes.upper),
+            text = stringResource(shared.resources.Res.string.upper),
             style = appTypography().title18.copy(fontWeight = FontWeight.Bold, color = White)
             , modifier = Modifier.constrainAs(upperTextView) {
                 start.linkTo(parent.start)
@@ -53,7 +56,7 @@ fun JawGuideLine() {
             })
 
         Text(
-            text = stringResource(StringRes.lower),
+            text = stringResource(shared.resources.Res.string.lower),
             style = appTypography().title18.copy(fontWeight = FontWeight.Bold, color = White),
             modifier = Modifier.constrainAs(lowerTextView) {
                 start.linkTo(parent.start, margin = 10.dp)

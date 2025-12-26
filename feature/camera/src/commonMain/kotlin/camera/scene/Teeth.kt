@@ -23,13 +23,36 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import camera.viewmodel.JawViewModel
-import shared.resource.DrawableRes.detected_teeth_stage
-import shared.resource.DrawableRes.not_detected_teeth_stage
 import shared.ext.toIconIndex
 import shared.model.JawSide
 import shared.model.ToothDetectionStatus
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
+import shared.resources.Res
+import shared.resources.ic_detected_teeth_1
+import shared.resources.ic_detected_teeth_2
+import shared.resources.ic_detected_teeth_3
+import shared.resources.ic_detected_teeth_4
+import shared.resources.ic_detected_teeth_5
+import shared.resources.ic_detected_teeth_6
+import shared.resources.ic_detected_teeth_7
+import shared.resources.ic_detected_teeth_8
+import shared.resources.ic_missed_teeth_1
+import shared.resources.ic_missed_teeth_2
+import shared.resources.ic_missed_teeth_3
+import shared.resources.ic_missed_teeth_4
+import shared.resources.ic_missed_teeth_5
+import shared.resources.ic_missed_teeth_6
+import shared.resources.ic_missed_teeth_7
+import shared.resources.ic_missed_teeth_8
+import shared.resources.ic_teeth_1
+import shared.resources.ic_teeth_2
+import shared.resources.ic_teeth_3
+import shared.resources.ic_teeth_4
+import shared.resources.ic_teeth_5
+import shared.resources.ic_teeth_6
+import shared.resources.ic_teeth_7
+import shared.resources.ic_teeth_8
 import shared.theme.Secondary
 
 private const val ROTATE_AROUND = 180f
@@ -252,4 +275,60 @@ private fun rotateFirstAndLastTwoTeeth(index: Int): Float {
     }
 }
 
+
+val not_detected_teeth_stage = listOf(
+    Res.drawable.ic_teeth_1,
+    Res.drawable.ic_teeth_2,
+    Res.drawable.ic_teeth_3,
+    Res.drawable.ic_teeth_4,
+    Res.drawable.ic_teeth_5,
+    Res.drawable.ic_teeth_6,
+    Res.drawable.ic_teeth_7,
+    Res.drawable.ic_teeth_8,
+    Res.drawable.ic_teeth_4,
+    Res.drawable.ic_teeth_5,
+    Res.drawable.ic_teeth_6,
+    Res.drawable.ic_teeth_7,
+    Res.drawable.ic_teeth_8,
+    Res.drawable.ic_teeth_1,
+    Res.drawable.ic_teeth_2,
+    Res.drawable.ic_teeth_3,
+)
+val detected_teeth_stage = listOf(
+    Res.drawable.ic_detected_teeth_1,
+    Res.drawable.ic_detected_teeth_2,
+    Res.drawable.ic_detected_teeth_3,
+    Res.drawable.ic_detected_teeth_4,
+    Res.drawable.ic_detected_teeth_5,
+    Res.drawable.ic_detected_teeth_6,
+    Res.drawable.ic_detected_teeth_7,
+    Res.drawable.ic_detected_teeth_8,
+    Res.drawable.ic_detected_teeth_4,
+    Res.drawable.ic_detected_teeth_5,
+    Res.drawable.ic_detected_teeth_6,
+    Res.drawable.ic_detected_teeth_7,
+    Res.drawable.ic_detected_teeth_8,
+    Res.drawable.ic_detected_teeth_1,
+    Res.drawable.ic_detected_teeth_2,
+    Res.drawable.ic_detected_teeth_3,
+)
+
+private val missing_teeth_stage = listOf(
+    Res.drawable.ic_missed_teeth_1,
+    Res.drawable.ic_missed_teeth_2,
+    Res.drawable.ic_missed_teeth_3,
+    Res.drawable.ic_missed_teeth_4,
+    Res.drawable.ic_missed_teeth_5,
+    Res.drawable.ic_missed_teeth_6,
+    Res.drawable.ic_missed_teeth_7,
+    Res.drawable.ic_missed_teeth_8,
+    Res.drawable.ic_missed_teeth_4,
+    Res.drawable.ic_missed_teeth_5,
+    Res.drawable.ic_missed_teeth_6,
+    Res.drawable.ic_missed_teeth_7,
+    Res.drawable.ic_missed_teeth_8,
+    Res.drawable.ic_missed_teeth_1,
+    Res.drawable.ic_missed_teeth_2,
+    Res.drawable.ic_missed_teeth_3,
+)
 

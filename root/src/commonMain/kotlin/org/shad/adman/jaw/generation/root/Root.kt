@@ -1,13 +1,100 @@
 package org.shad.adman.jaw.generation.root
 
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.BlurredEdgeTreatment
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import camera.scene.CameraPreview
+import moe.tlaster.precompose.PreComposeApp
+import moe.tlaster.precompose.navigation.NavHost
+import moe.tlaster.precompose.navigation.Navigator
+import moe.tlaster.precompose.navigation.rememberNavigator
+import moe.tlaster.precompose.navigation.transition.NavTransition
+import org.shad.adman.jaw.generation.navigation.MainNav
+import shared.platform.PermissionCallback
+import shared.platform.PermissionStatus
+import shared.platform.PermissionType
+import shared.platform.createPermissionsManager
+import shared.theme.Black
 
 @Composable
 @Preview
 fun Root() {
-    MaterialTheme {
+    PreComposeApp {
+        val navigator = rememberNavigator()
+        Box(modifier = Modifier.fillMaxSize()) {
+            NavHost(
+                navigator = navigator,
+                navTransition = NavTransition(),
+                initialRoute = MainNav.main
+            ) {
 
+            }
+
+            RootCameraPreview(cameraPreviewMode = defineCameraPreviewModel(navigator))
+        }
     }
+}
+
+private enum class CameraPreviewMode{PreviewBlurred,Detection,DoNotShow}
+@Composable
+private fun defineCameraPreviewModel(navigator: Navigator): CameraPreviewMode {
+    val currentEntry by navigator.currentEntry.collectAsState(null)
+    val currentRoute = currentEntry?.route?.route
+    return when (currentRoute) {
+        MainNav.main -> CameraPreviewMode.PreviewBlurred
+        else -> CameraPreviewMode.DoNotShow
+    }
+}
+
+@Composable
+private fun RootCameraPreview(cameraPreviewMode: CameraPreviewMode) {
+    var cameraPermissionState by remember { mutableStateOf(false) }
+
+    val permissionsManager = createPermissionsManager(object : PermissionCallback {
+        override fun onPermissionStatus(
+            permissionType: PermissionType,
+            status: PermissionStatus
+        ) {
+            when (status) {
+                PermissionStatus.GRANTED -> {
+                    when (permissionType) {
+                        PermissionType.CAMERA -> {
+                            cameraPermissionState = true
+                        }
+                    }
+                }
+
+                PermissionStatus.DENIED -> {}
+                PermissionStatus.SHOW_RATIONAL -> {}
+            }
+        }
+    })
+
+    if (permissionsManager.isPermissionGranted(PermissionType.CAMERA).not())
+        permissionsManager.AskPermission(PermissionType.CAMERA)
+
+    if (cameraPermissionState && (cameraPreviewMode == CameraPreviewMode.PreviewBlurred || cameraPreviewMode == CameraPreviewMode.Detection))
+        Box(modifier = Modifier.fillMaxSize()) {
+            CameraPreview(
+                modifier = Modifier.fillMaxSize(),
+                cameraConfiguration = {},
+                onCameraControllerReady = {})
+            if (cameraPreviewMode == CameraPreviewMode.PreviewBlurred)
+                Box(
+                    modifier = Modifier.fillMaxSize().background(Black).alpha(0.5f)
+                        .blur(radius = 12.dp, edgeTreatment = BlurredEdgeTreatment.Rectangle)
+                )
+        }
 }

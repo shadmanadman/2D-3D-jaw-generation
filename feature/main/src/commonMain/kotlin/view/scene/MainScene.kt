@@ -28,7 +28,6 @@ import shared.theme.appTypography
 import shared.ui.AnimatedRgbBorder
 import shared.ui.heartBeatScale
 
-//import shared.ui.
 @Preview
 @Composable
 fun MainScene() {

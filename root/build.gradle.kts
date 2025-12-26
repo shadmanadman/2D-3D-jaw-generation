@@ -35,6 +35,12 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.precompose.core)
+
+            implementation(libs.koin.compose)
+            implementation(libs.koin.core)
+
+            implementation(project(":shared"))
+            implementation(project(":feature:camera"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
